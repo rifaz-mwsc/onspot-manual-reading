@@ -1,0 +1,68 @@
+button.btn {
+  width: auto !important;
+  display: inline-block;
+  padding: 0.4rem 1rem; /* smaller padding */
+  font-size: 0.9rem;   /* slightly smaller text */
+}
+/*  SCSS (or plain CSS) */
+.reading-info {
+  --label-width: 110px;     /* Adjust as needed */
+  --gap: 8px;
+
+  dl {
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: var(--label-width) 1fr; /* label | value */
+    gap: var(--gap);
+  }
+
+  .reading-row {
+    display: contents;   /* let the grid act on dt/dd directly */
+  }
+  
+
+  dt, dd {
+    margin: 0;
+    padding: 0;
+    font-weight: 600;          /* label bold */
+    color: #555;                /* softer text for value */
+  }
+
+  dd {
+    font-weight: normal;
+    color: #222;
+  }
+
+  /* Optional: make it responsive */
+  @media (max-width: 480px) {
+    --label-width: 80px;
+  }
+}
+
+/* meter-readings.component.scss */
+
+/* --- Optional: Highlight the active filter button --- */
+.filter a {
+  padding: 0.5rem 0.5rem;
+  color: #333;
+  text-decoration: none;
+  border-radius: 4px;
+}
+.filter a.active,
+.filter a:hover {
+  background: #007bff;
+  color: #fff;
+}
+
+/* --- Styling for the reading rows --- */
+.event.schedule.set-relative {
+  border-bottom: 1px solid #e9ecef;
+  padding: 1rem 0;
+}
+.event.schedule.set-relative .new {
+  background: #fff3cd; /* light yellow for pending */
+}
+.event.schedule.set-relative .trending {
+  background: #d4edda; /* light green for completed */
+}

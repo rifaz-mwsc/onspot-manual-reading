@@ -55,13 +55,18 @@ export class MeterReadingListComponent implements OnInit {
         this.loading = false;
         console.log('Reading submitted successfully:', response);
         if (response.is_successful) {
-          this.toastrService.success('Reading submitted successfully');
+          this.toastrService.success(response.message);
+        }
+        if (!response.is_successful){
+            this.toastrService.error(response.message);
+
         }
       },
       error: (error) => {
         this.loading  = false;
-        console.error('Error submitting reading:', error);
-        this.toastrService.error('Error submitting reading');
+        console.log('Error submitting reading:', error.error);
+        console.log('Error submitting reading:', error.error.error_message);
+        this.toastrService.error(error.error.error_message || 'Error submitting reading');
       }
     });
   }

@@ -85,6 +85,14 @@ export class AuthServiceService {
     }));
   }
 
+    get(endpoint: string) {
+    return this.http.get(this.baseUrl + endpoint);
+  }
+
+  post(endpoint: string, body: any) {
+    return this.http.post(this.baseUrl + endpoint, body);
+  }
+  
 // 🔹 Getters
   getToken(): string | null {
     return localStorage.getItem(this.tokenKey);

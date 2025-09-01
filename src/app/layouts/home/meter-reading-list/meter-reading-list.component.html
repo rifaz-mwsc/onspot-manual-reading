@@ -67,72 +67,67 @@
                               <div class="col-12">
                                 <div class="stripe-section">
                                   <div class="content">
-                                    <table>
-                                      <tr>
-                                        <td>Prev Reading</td>
-                                        <td>{{ item.previous_reading_amount }}</td>
-                                      </tr>
-                                      <tr>
-                                        <td>prev Reading Date</td>
-                                        <td>{{ item.previous_reading_date | date: 'MM/yyyy' }}</td>
-                                      </tr>
-                                      <tr>
-                                        <td>tarrif</td>
-                                        <td>{{ item.tariff_group_description }}</td>
-                                      </tr>
-                                    </table>
+                                    <div class="reading-info">
+                                      <dl>
+                                        <div class="reading-row">
+                                          <dt class="reading-label">Prev Reading:</dt>
+                                          <dd class="reading-value">{{ item.previous_reading_amount }}</dd>
+                                        </div>
+
+                                        <div class="reading-row">
+                                          <dt class="reading-label">Prev Date:</dt>
+                                          <dd class="reading-value">
+                                            {{ item.previous_reading_date | date: 'MM/yyyy' }}
+                                          </dd>
+                                        </div>
+
+                                        <div class="reading-row">
+                                          <dd class="reading-value">{{ item.tariff_group_description }}</dd>
+                                        </div>
+                                      </dl>
+                                    </div>
+
                                   </div>
                                 </div>
                               </div>
                               <div class="col-12">
                                 <div class="content">
-                                  <table>
-                                    <tr>
-                                      <td><input type="text" class="form-control"
-                                          [placeholder]="item.previous_reading_amount" autocomplete="off"
-                                          [(ngModel)]="readingData.current_reading" name="username" required></td>
-                                    </tr>
-                                    <tr>
-                                      <td>
-                                        <button
-                                          (click)="submitReading(item.meter_reading_mrd, readingData.current_reading)"
-                                          class="btn btn-default primary-btn radius-0" type="button"
-                                          [disabled]="loading">
-                                          <span *ngIf="!loading">Submit</span>
-                                          <span *ngIf="loading">Submitting...</span>
-                                        </button>
-                                      </td>
-                                    </tr>
-                                  </table>
+                                  <div class="input-group mb-2">
+                                    <input type="text" class="form-control" [placeholder]="item.previous_reading_amount"
+                                      [(ngModel)]="readingData.current_reading" required>
+                                    <button class="btn btn-primary"
+                                      (click)="submitReading(item.meter_reading_mrd, readingData.current_reading)"
+                                      [disabled]="loading">
+                                      <span *ngIf="!loading">Submit</span>
+                                      <span *ngIf="loading">...</span>
+                                    </button>
+                                  </div>
+
                                 </div>
                               </div>
-                      
+
                             </div>
 
                           </div>
 
                         </div>
-                          <div class="row">
-                                  <div class="col-12">
-                                <div class="content">
-                                  <input type="file" accept="image/*" capture="environment"
-                                    (change)="onFileSelected($event)" />
-                                  <div *ngIf="previewUrl">
-                                    <img [src]="previewUrl" alt="Preview" class="img-thumbnail mt-2"
-                                      style="max-width: 200px;" />
-                                  </div>
-                                  <!-- <button class="btn btn-primary mt-2" (click)="uploadImage()"
-                                    [disabled]="!selectedFile">Upload</button> -->
-                                       <button
-                                          (click)="uploadImage(item.meter_reading_mrd)"
-                                          class="btn btn-default primary-btn radius-0" type="button"
-                                          [disabled]="!selectedFile || imglLoading">
-                                          <span *ngIf="!imglLoading">Upload</span>
-                                          <span *ngIf="imglLoading">uploading...</span>
-                                        </button>
-                                </div>
-                              </div>
-                            </div>
+                        <div class="upload-section">
+                          <label class="btn btn-outline-secondary btn-sm">
+                            📷 Capture / Upload
+                            <input type="file" accept="image/*" capture="environment" hidden
+                              (change)="onFileSelected($event)" />
+                          </label>
+
+                          <div *ngIf="previewUrl" class="mt-2">
+                            <img [src]="previewUrl" alt="Preview" class="img-thumbnail" style="max-width: 100px;" />
+                          </div>
+
+                          <button class="btn btn-success btn-sm mt-2 ml-1" (click)="uploadImage(item.meter_reading_mrd)"
+                            [disabled]="!selectedFile || imglLoading">
+                            <span *ngIf="!imglLoading">Upload</span>
+                            <span *ngIf="imglLoading">Uploading...</span>
+                          </button>
+                        </div>
                       </div>
 
                     </div>

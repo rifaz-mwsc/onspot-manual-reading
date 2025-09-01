@@ -25,6 +25,7 @@ export class MeterReadingService {
   }
 
     getAssignedReadings(): Observable<any> {
+      this.baseUrl = localStorage.getItem('apiUrl') || 'https://onspot-api-prd-01.mwsc.com.mv/v1/';
     const token = this.authService.getToken();
 
     const headers = new HttpHeaders({
@@ -34,6 +35,7 @@ export class MeterReadingService {
     return this.http.get<any>(this.baseUrl + 'ecc-manual-meter-reading/assigned', { headers });
   }
   uploadMeterReadingFile(meterReadingMrd: string, comment: string, file: File): Observable<any> {
+    this.baseUrl = localStorage.getItem('apiUrl') || 'https://onspot-api-prd-01.mwsc.com.mv/v1/';
      const token = this.authService.getToken();
     const params = new HttpParams()
       .set('meter_reading_mrd', meterReadingMrd)
@@ -48,6 +50,7 @@ export class MeterReadingService {
   }
 
   submitCurrentReading(readingData: any): Observable<any> {
+    this.baseUrl = localStorage.getItem('apiUrl') || 'https://onspot-api-prd-01.mwsc.com.mv/v1/';
     const token = this.authService.getToken();
 
     const headers = new HttpHeaders({
