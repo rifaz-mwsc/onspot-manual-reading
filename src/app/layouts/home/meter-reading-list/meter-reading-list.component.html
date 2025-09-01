@@ -1,0 +1,152 @@
+<app-ecommerce-header></app-ecommerce-header>
+<div class="layout-ecommerce">
+  <section class="cart-section section-b-space">
+    <div class="container">
+      <div *ngIf="!filteredReadings.length" class="col-sm-12 empty-cart-cls text-center mb-4">
+        <img src="assets/images/empty-list.png" class="img-fluid mb-4">
+        <h3><strong>No Assigned Meter Readings</strong></h3>
+        <h4>Contact Support :)</h4>
+        <a class="btn btn-default primary-btn radius-0 m-t-10">Contact Support</a>
+      </div>
+      <section class="ecommerce-tab">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-8 offset-md-2">
+              <div class="title title2">
+                <div class="sub-title">
+                  <div>
+                    <h2 class="title-text">Meter Readings for {{ mruId }}</h2>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- <div class="row">
+            <div class="col-12 filter-section">
+              <div class="filter-container isotopeFilters">
+                <ul class="list-inline filter">
+                  <li><a data-filter="*" href="javascript:void(0)">All</a></li>
+                  <li><a data-filter=".new" href="javascript:void(0)">Pending</a></li>
+                  <li><a data-filter=".trending" href="javascript:void(0)">Completed</a></li>
+                </ul>
+              </div>
+            </div>
+          </div> -->
+          <section *ngFor="let reading of filteredReadings" class="event schedule set-relative" id="schedule">
+            <div class="container">
+              <div class="row">
+                <div class="col-12">
+                  <div class="title title2 title-inner">
+                    <div class="main-title">
+                      <h2 class="font-primary borders text-center main-text text-uppercase m-b-0"><span>{{
+                          reading.contract_account_no }}</span></h2>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-12">
+                  <div class="cal-time">
+                    <div class="time">
+
+                      <h4 class="text-capitalize monday-text">{{ reading.address_ward }}. {{ reading.address_house_name
+                        }}</h4>
+                    </div>
+                    <div class="time">
+
+                      <p>{{ reading.address_street }} / {{ reading.address_city }}</p>
+                    </div>
+                  </div>
+                  <div class="event-container scrollbar">
+                    <div>
+                      <div class=" cal-time events" *ngFor="let item of reading.meterReadings">
+                        <div class="row">
+                          <div class="col-md-12">
+                            <div class="schedule-event">
+                              <h5 class="names">{{ item.contract_no }} - {{ item.meter_no }}</h5>
+
+                              <div class="col-12">
+                                <div class="stripe-section">
+                                  <div class="content">
+                                    <table>
+                                      <tr>
+                                        <td>Prev Reading</td>
+                                        <td>{{ item.previous_reading_amount }}</td>
+                                      </tr>
+                                      <tr>
+                                        <td>prev Reading Date</td>
+                                        <td>{{ item.previous_reading_date | date: 'MM/yyyy' }}</td>
+                                      </tr>
+                                      <tr>
+                                        <td>tarrif</td>
+                                        <td>{{ item.tariff_group_description }}</td>
+                                      </tr>
+                                    </table>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="col-12">
+                                <div class="content">
+                                  <table>
+                                    <tr>
+                                      <td><input type="text" class="form-control"
+                                          [placeholder]="item.previous_reading_amount" autocomplete="off"
+                                          [(ngModel)]="readingData.current_reading" name="username" required></td>
+                                    </tr>
+                                    <tr>
+                                      <td>
+                                        <button
+                                          (click)="submitReading(item.meter_reading_mrd, readingData.current_reading)"
+                                          class="btn btn-default primary-btn radius-0" type="button"
+                                          [disabled]="loading">
+                                          <span *ngIf="!loading">Submit</span>
+                                          <span *ngIf="loading">Submitting...</span>
+                                        </button>
+                                      </td>
+                                    </tr>
+                                  </table>
+                                </div>
+                              </div>
+                      
+                            </div>
+
+                          </div>
+
+                        </div>
+                          <div class="row">
+                                  <div class="col-12">
+                                <div class="content">
+                                  <input type="file" accept="image/*" capture="environment"
+                                    (change)="onFileSelected($event)" />
+                                  <div *ngIf="previewUrl">
+                                    <img [src]="previewUrl" alt="Preview" class="img-thumbnail mt-2"
+                                      style="max-width: 200px;" />
+                                  </div>
+                                  <!-- <button class="btn btn-primary mt-2" (click)="uploadImage()"
+                                    [disabled]="!selectedFile">Upload</button> -->
+                                       <button
+                                          (click)="uploadImage(item.meter_reading_mrd)"
+                                          class="btn btn-default primary-btn radius-0" type="button"
+                                          [disabled]="!selectedFile || imglLoading">
+                                          <span *ngIf="!imglLoading">Upload</span>
+                                          <span *ngIf="imglLoading">uploading...</span>
+                                        </button>
+                                </div>
+                              </div>
+                            </div>
+                      </div>
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+
+        </div>
+      </section>
+
+    </div>
+  </section>
+  <app-ecommerce-footer></app-ecommerce-footer>
+</div>

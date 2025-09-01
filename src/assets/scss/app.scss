@@ -1,0 +1,63 @@
+
+@import "~bootstrap-scss/bootstrap.scss";
+@import 'swiper/scss';
+@import 'swiper/scss/navigation';
+@import 'swiper/scss/pagination';
+@import "~ngx-owl-carousel-o/lib/styles/prebuilt-themes/owl.carousel.min.css";
+@import "~ngx-owl-carousel-o/lib/styles/prebuilt-themes/owl.theme.default.min.css";      
+@import "~animate-scss/animate.css";
+@import "color-7";
+@import "font-awesome.scss";
+@import "themify.scss";
+@import "flaticon.scss";
+@import "../css/keyframes.css";
+@import "~animate.css/animate.min.css";
+@import '~ngx-toastr/toastr';
+
+/* Poppins */
+@font-face {
+  font-family: 'Poppins';
+  src: url('../fonts/googlefonts/Poppins-Regular.ttf') format('woff2'),
+       url('../fonts/googlefonts/Poppins-Regular.ttf') format('woff');
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Poppins';
+  src: url('../fonts/googlefonts/Poppins-Bold.ttf') format('woff2'),
+       url('../fonts/googlefonts/Poppins-Bold.ttf') format('woff');
+  font-weight: 700;
+  font-style: normal;
+}
+
+/* Montserrat */
+@font-face {
+  font-family: 'Montserrat';
+  src: url('../fonts/googlefonts/Montserrat-Regular.ttf') format('woff2'),
+       url('../fonts/googlefonts/Montserrat-Regular.ttf') format('woff');
+  font-weight: 400;
+  font-style: normal;
+}
+
+/* Capriola */
+@font-face {
+  font-family: 'Capriola';
+  src: url('../fonts/googlefonts/Capriola-Regular.ttf') format('woff2'),
+       url('../fonts/googlefonts/Capriola-Regular.ttf') format('woff');
+  font-weight: 400;
+  font-style: normal;
+}
+
+/* Work Sans */
+@font-face {
+  font-family: 'Work Sans';
+  src: url('../fonts/googlefonts/WorkSans-Regular.ttf') format('woff2'),
+       url('../fonts/googlefonts/WorkSans-Regular.ttf') format('woff');
+  font-weight: 400;
+  font-style: normal;
+}
+
+/* Optional: set default font */
+body {
+  font-family: 'Poppins', sans-serif;
+}

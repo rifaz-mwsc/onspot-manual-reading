@@ -1,0 +1,61 @@
+<!-- section start -->
+<section class="agency blog blog-sec">
+    <div class="container">
+        <div class="row">
+                 <div *ngIf="!meterReadingMru.length" class="col-sm-12 empty-cart-cls text-center mb-4">
+        <img src="assets/images/empty-list.png" class="img-fluid mb-4">
+        <h3><strong>No Assigned Meter Readings</strong></h3>
+        <h4>Contact Support :)</h4>
+        <a class="btn btn-default primary-btn radius-0 m-t-10">Contact Support</a>
+      </div>
+            <!-- <div class="col-12">
+                <div class="blog-agency">
+                    <div class="blog-contain">
+                        <img src="assets/images/agency/blog/12-main.jpg" alt="" class="img-fluid">
+                        <div class="img-container center-content">
+                            <div class="center-content">
+                                <div class="blog-info">
+                                    <div class="m-b-20">
+                                        <div class="center-text"><i class="fa fa-clock-o m-r-10" aria-hidden="true"></i>
+                                            <h6 class="m-r-25 font-blog">June 19, 2018</h6>
+                                            <i class="fa fa-map-marker m-r-10" aria-hidden="true"></i>
+                                            <h6 class="font-blog">Phonics ,Newyork</h6></div>
+                                    </div>
+                                    <h5 class="blog-head font-600">Twice profit than before you</h5>
+                                    <p class="para2">Lorem Ipsum is simply dummy text of the printing and typesetting
+                                        industry. Lorem Ipsum has been the industry's standard dummy text ever since the
+                                        1500s, when an unknown printer took a galley of type and scrambled it to make a
+                                        type specimen book...............</p>
+                                    <div class="btn-bottom m-t-20"><a href="#" class="text-uppercase">read more</a></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> -->
+            <div class="col-lg-4 col-md-6" *ngFor="let mru of meterReadingMru">
+                <div class="blog-agency">
+                    <div class="blog-contain">
+                        <!-- <img [src]="blog.img" alt="" class="img-fluid"> -->
+                        <div class="img-container center-content">
+                            <div class="center-content">
+                                <div class="blog-info">
+                                    <!-- <div class="m-b-20">
+                                        <div class="center-text"><i class="fa fa-clock-o m-r-10" aria-hidden="true"></i>
+                                            <h6 class="m-r-25 font-blog">Date</h6>
+                                            <i class="fa fa-map-marker m-r-10" aria-hidden="true"></i>
+                                            <h6 class="font-blog">blah</h6></div>
+                                    </div> -->
+                                    <!-- <h5 class="blog-head font-600">{{mru}}</h5>
+                                    <p class="para2">content</p> -->
+                        <a href="javascript:void(0)" (click)= "ViewMeterReadings(mru)" class="btn btn-default btn-white">{{mru}}</a>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

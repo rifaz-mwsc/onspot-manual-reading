@@ -1,0 +1,74 @@
+<!-- <app-ecommerce-header></app-ecommerce-header> -->
+<div class="layout-ecommerce">
+    <!-- Login section -->
+    <section class="login-page section-b-space">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 ">
+                    <h3>Switch Base URL</h3>
+                    <div class="theme-card authentication-right">
+                        <h6 class="title-font">Selected Base URL</h6>
+                        <p>{{ selectedUrl }}</p>
+                        <div class="form-group">
+                            <label for="apiUrl">Select Environment</label>
+                            <!-- <select id="apiUrl" class="form-control" [(ngModel)]="selectedApiUrl">
+                                                        <option *ngFor="let api of apiEndpoints" [value]="api.url">
+                                                            {{ api.name }}
+                                                        </option>
+                                                    </select> -->
+                            <select [(ngModel)]="selectedUrl" class="form-control" (change)="onApiUrlChange($event)">
+                                <option *ngFor="let api of apiUrls" [value]="api.url">{{ api.name }}</option>
+                            </select>
+                        </div>
+                        <!-- <a href="#" class="btn primary-btn btn-default radius-0">Create
+                            an Account</a> -->
+                    </div>
+                </div>
+                <div class="col-lg-6 right-login">
+                    <h3>Login</h3>
+                    <div class="theme-card">
+                        <form (ngSubmit)="onLogin()" class="theme-form">
+                            <div class="form-group">
+                                <label for="email">username</label>
+                                <input type="text" class="form-control" placeholder="DU*****" autocomplete="off"
+                                    [(ngModel)]="credentials.domain_username" name="username" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="review">Password</label>
+                                <input type="password" class="form-control" placeholder="********" autocomplete="off"
+                                    [(ngModel)]="credentials.password" name="password" required>
+                            </div>
+                            <button type="submit"
+                                class="btn primary-btn btn-default radius-0 d-flex align-items-center justify-content-center"
+                                [disabled]="loading">
+
+                                <ng-container *ngIf="!loading; else loadingTpl">
+                                    Login
+                                </ng-container>
+
+                                <ng-template #loadingTpl>
+                                    <span class="spinner-border spinner-border-sm mr-2" role="status"
+                                        aria-hidden="true"></span>
+                                    Loading...
+                                </ng-template>
+                            </button>
+                            <!-- 
+                        <button type="submit" [disabled]="loading" class="btn primary-btn btn-default radius-0">Login</button>
+                        <div class="spinner-border text-primary" role="status"> <span class="sr-only">Loading...</span> </div> -->
+                        </form>
+
+                        <div *ngIf="errorMessage" class="alert alert-danger dark outline mt-3" role="alert">{{
+                            errorMessage }} </div>
+
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+
+    <!-- end Login section -->
+
+
+    <app-ecommerce-footer></app-ecommerce-footer>
+</div>
